@@ -11,4 +11,7 @@ source ~/.zprofile
 poetry --version
 2. 建立虛擬環境
 poetry shell
-3. 
+3. migrate migration files 
+python manage.py migrate
+4. 導入預先件好的資料
+python manage.py loaddata policyholders_fixture.json
