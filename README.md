@@ -28,9 +28,9 @@ python manage.py loaddata policyholders_fixture.json
 ```
 python manage.py runserver
 ```
-> 即可使用api 
-> ex: http://127.0.0.1:8000/api/policyholders/0000000001/
-> ex2: http://127.0.0.1:8000/api/policyholders/0000000002/top/
+> 即可使用api  
+> ex: http://127.0.0.1:8000/api/policyholders/0000000001/  
+> ex2: http://127.0.0.1:8000/api/policyholders/0000000002/top/  
 
 ## 前端
 1. 下載node.js 
