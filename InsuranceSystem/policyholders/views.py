@@ -35,7 +35,7 @@ def get_policyholder(request, code) -> JsonResponse:
     direct_policyholders_ids = direct_policyholders.values_list('id', flat=True)
     indirect_policyholders= Policyholder.objects.filter(introducer_id__in=direct_policyholders_ids).order_by("registration_date")
     l,r = get_left_right_tree_data(policyholder,direct_policyholders,indirect_policyholders)
-    context['root'] = data
+    context = data
     context['l'] = l
     context['r'] = r
     context['status'] = True
@@ -74,7 +74,7 @@ def get_policyholder_top_list(request, code) -> JsonResponse:
     direct_policyholders_ids = direct_policyholders.values_list('id', flat=True)
     indirect_policyholders= Policyholder.objects.filter(introducer_id__in=direct_policyholders_ids).order_by("registration_date")
     l,r = get_left_right_tree_data(policyholder,direct_policyholders,indirect_policyholders)
-    context['root'] = data
+    context = data
     context['l'] = l
     context['r'] = r
     context['status'] = True
