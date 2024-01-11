@@ -14,6 +14,38 @@
     <div>
       <h1>關係圖</h1>
     </div>
+    <div class="binary-tree">
+      <!-- 第一層 -->
+      <div class="level-1">
+        <div class="node">A</div>
+      </div>
+
+      <!-- 第二層 -->
+      <div class="level-2">
+        <div class="node">B1</div>
+        <div class="node">B2</div>
+      </div>
+
+      <!-- 第三層 -->
+      <div class="level-3">
+        <div class="node">C1</div>
+        <div class="node">C2</div>
+        <div class="node">C3</div>
+        <div class="node">C4</div>
+      </div>
+
+      <!-- 第四層 -->
+      <div class="level-4">
+        <div class="node">D1</div>
+        <div class="node">D2</div>
+        <div class="node">D3</div>
+        <div class="node">D4</div>
+        <div class="node">D5</div>
+        <div class="node">D6</div>
+        <div class="node">D7</div>
+        <div class="node">D8</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -51,6 +83,43 @@ export default {
 .query-form button {
   margin-left: 10px; /* Adjust the margin-left as needed */
 }
+.binary-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.node {
+  width: 100px;
+  height: 40px;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+}
+
+/* 調整每一層的樣式 */
+.level-1 {
+  display: flex;
+}
+
+.level-2,
+.level-3,
+.level-4 {
+  display: flex;
+}
+
+.level-2 .node {
+  margin-right: 20px;
+}
+
+.level-3 .node {
+  margin-right: 10px;
+}
+
+.level-4 .node {
+  margin-right: 5px;
+}
 
 </style>
