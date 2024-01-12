@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-noszm@iik5pvr52sak+i78fv9nks!a2(7q93-4fg*dizx3rua+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "policyholders",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -48,8 +49,13 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",  # 替換成你的前端地址
+]
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = "InsuranceSystem.urls"
 
 TEMPLATES = [

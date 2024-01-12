@@ -40,6 +40,7 @@ brew install node
 2. 下載vue
 ```
 npm install -g @vue/cli
+npm install axios
 ```
 3. 進入前端專案
 ```

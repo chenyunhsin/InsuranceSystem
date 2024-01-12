@@ -50,8 +50,28 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-  // Your component logic goes here
+  data() {
+    return {
+      policyNumber: '',
+    };
+  },
+  methods: {
+    query() {
+      // 在這裡發送 API 請求
+      axios.get(`http://127.0.0.1:8000/api/policyholders/${this.policyNumber}/`, { withCredentials: true })
+        .then(response => {
+          // 處理 API 回傳的數據
+          console.log(response.data);
+        })
+        .catch(error => {
+          // 處理錯誤
+          console.error('API 請求失敗:', error);
+        });
+    },
+  },
 };
 </script>
 
