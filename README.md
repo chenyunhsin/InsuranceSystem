@@ -50,3 +50,6 @@ cd insurance_system_frontend
 ```
 npm run serve
 ```
+
+## DEMO影片
+https://youtu.be/NGWaakp0FLQ
