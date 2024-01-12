@@ -1,7 +1,7 @@
 # InsuranceSystem
 InsuranceSystem
 
-## Mac Os
+## Mac Os 環境建構
 1. 安裝poetry
 ```
 brew install pyenv
