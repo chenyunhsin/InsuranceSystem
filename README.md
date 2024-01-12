@@ -20,7 +20,7 @@ poetry shell
 ```
 python manage.py migrate
 ```
-4. 導入預先件好的資料
+4. 導入預先建好的資料
 ```
 python manage.py loaddata policyholders_fixture.json
 ```
@@ -29,8 +29,8 @@ python manage.py loaddata policyholders_fixture.json
 python manage.py runserver
 ```
 > 即可使用api  
-> ex: http://127.0.0.1:8000/api/policyholders/0000000001/  
-> ex2: http://127.0.0.1:8000/api/policyholders/0000000002/top/  
+> ex: http://127.0.0.1:8000/api/policyholders/{str: code}/  
+> ex2: http://127.0.0.1:8000/api/policyholders/{str: code}/top/  
 
 ## 前端
 1. 下載node.js 
