@@ -5,7 +5,7 @@ from rest_framework import status
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.request import Request
 from policyholders.models import Policyholder
-from policyholders.functions import get_left_right_tree_data
+from policyholders.functions import get_left_right_tree_data,get_left_right_tree_data_time_order
 @api_view(['GET'])
 def get_policyholder(request, code) -> JsonResponse:
     context = {'status': False}
@@ -34,7 +34,7 @@ def get_policyholder(request, code) -> JsonResponse:
     direct_policyholders = Policyholder.objects.filter(introducer=policyholder).order_by("registration_date")
     direct_policyholders_ids = direct_policyholders.values_list('id', flat=True)
     indirect_policyholders= Policyholder.objects.filter(introducer_id__in=direct_policyholders_ids).order_by("registration_date")
-    l,r = get_left_right_tree_data(policyholder,direct_policyholders,indirect_policyholders)
+    l,r = get_left_right_tree_data_time_order(policyholder,direct_policyholders,indirect_policyholders)
     context = data
     context['l'] = l
     context['r'] = r

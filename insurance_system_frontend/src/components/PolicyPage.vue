@@ -15,44 +15,129 @@
       <h1>關係圖</h1>
     </div>
     <div class="binary-tree">
+     <div v-if="response.value && response.value.introducer_code !== null"><a class="custom-link" @click="query2(response.value.code)" style="color: blue; text-decoration: underline; cursor: pointer;">上一層</a></div>
       <!-- 第一層 -->
       <div class="level-1">
         <div v-if="response.value">
               <div class="node" >
-                {{response.value.code}} <br/>{{response.value.name}}
+                {{response.value.code}} <br/>{{response.value.name}} 
               </div>
+             
         </div>
         <div v-else>
             請搜尋。
         </div>
-      
-       
       </div>
 
       <!-- 第二層 -->
       <div class="level-2">
-        <div class="node">B1</div>
-        <div class="node">B2</div>
+          <div v-if="response.value">
+                <div class="node" v-if="response.value.l && response.value.l[0]">
+                  {{response.value.l[0].code}} <br/>{{response.value.l[0].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else><div class="node"></div></div>
+          <div v-if="response.value">
+                <div class="node" v-if="response.value.r && response.value.r[0]">
+                  {{response.value.r[0].code}} <br/>{{response.value.r[0].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
       </div>
 
-      <!-- 第三層 -->
+      <!-- 第三層  -->
       <div class="level-3">
-        <div class="node">C1</div>
-        <div class="node">C2</div>
-        <div class="node">C3</div>
-        <div class="node">C4</div>
+          <div v-if="response.value">
+                <div class="node" v-if="response.value.l && response.value.l[1]">
+                  {{response.value.l[1].code}} <br/>{{response.value.l[1].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else><div class="node"></div></div>
+          <div v-if="response.value">
+                <div class="node" v-if="response.value.l && response.value.l[2]">
+                  {{response.value.l[2].code}} <br/>{{response.value.l[2].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else><div class="node"></div></div>
+          <div v-if="response.value">
+                <div class="node" v-if="response.value.r && response.value.r[1]">
+                  {{response.value.r[1].code}} <br/>{{response.value.r[1].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+          <div v-if="response.value">
+                <div class="node" v-if="response.value.r && response.value.r[2]">
+                  {{response.value.r[2].code}} <br/>{{response.value.r[2].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
       </div>
-
+    
       <!-- 第四層 -->
       <div class="level-4">
-        <div class="node">D1</div>
-        <div class="node">D2</div>
-        <div class="node">D3</div>
-        <div class="node">D4</div>
-        <div class="node">D5</div>
-        <div class="node">D6</div>
-        <div class="node">D7</div>
-        <div class="node">D8</div>
+         <div v-if="response.value">
+                <div class="node" v-if="response.value.l  && response.value.l[3]">
+                  {{response.value.l[3].code}} <br/>{{response.value.l[3].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+        <div v-if="response.value">
+                <div class="node" v-if="response.value.l && response.value.l[4]">
+                  {{response.value.l[4].code}} <br/>{{response.value.l[4].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+         <div v-if="response.value">
+                <div class="node" v-if="response.value.l  && response.value.l[5]">
+                  {{response.value.l[5].code}} <br/>{{response.value.l[5].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+         <div v-if="response.value">
+                <div class="node" v-if="response.value.l  && response.value.l[6]">
+                  {{response.value.l[6].code}} <br/>{{response.value.l[6].name}}
+                </div>
+                <div v-else><div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+        <div v-if="response.value">
+                <div class="node" v-if="response.value.r && response.value.r[3]">
+                  {{response.value.r[3].code}} <br/>{{response.value.r[3].name}}
+                </div>
+                <div v-else> <div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+        <div v-if="response.value">
+                <div class="node" v-if="response.value.r && response.value.r[4]">
+                  {{response.value.r[4].code}} <br/>{{response.value.r[4].name}}
+                </div>
+                 <div v-else> <div class="node"></div></div>
+          </div>
+         <div v-else> <div class="node"></div></div>
+        <div v-if="response.value">
+                <div class="node" v-if="response.value.r && response.value.r[5]">
+                  {{response.value.r[5].code}} <br/>{{response.value.r[5].name}}
+                </div>
+                <div v-else> <div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+        <div v-if="response.value ">
+                <div class="node" v-if="response.value.r && response.value.r[6]">
+                  {{response.value.r[6].code}} <br/>{{response.value.r[6].name}}
+                </div>
+                <div v-else> <div class="node"></div></div>
+          </div>
+          <div v-else> <div class="node"></div></div>
+          
       </div>
     </div>
   </div>
@@ -70,14 +155,26 @@ export default {
   },
   methods: {
     query() {
-      // 在這裡發送 API 請求
       axios.get(`http://127.0.0.1:8000/api/policyholders/${this.policyNumber}/`, { withCredentials: true })
         .then(res => {
           this.response.value = res.data;
           console.log(this.response);
         })
         .catch(error => {
-          
+          const errorMessage = 'API 請求失敗: ' + error;
+          alert(errorMessage);
+          console.error('API 請求失敗:', error);
+        });
+    },
+    query2(introducerCode){
+       axios.get(`http://127.0.0.1:8000/api/policyholders/${introducerCode}/top/`, { withCredentials: true })
+        .then(res => {
+          this.response.value = res.data;
+          console.log(this.response);
+        })
+        .catch(error => {
+          const errorMessage = 'API 請求失敗: ' + error;
+          alert(errorMessage);
           console.error('API 請求失敗:', error);
         });
     },
@@ -152,4 +249,10 @@ export default {
   margin-right: 5px;
 }
 
+.custom-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    display: flex;
+  }
 </style>
