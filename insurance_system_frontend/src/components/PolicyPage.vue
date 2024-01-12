@@ -19,7 +19,7 @@
       <!-- 第一層 -->
       <div class="level-1">
         <div v-if="response.value">
-              <div class="node" >
+              <div class="node" style="background-color: #DAA520;">
                 {{response.value.code}} <br/>{{response.value.name}} 
               </div>
              
@@ -32,15 +32,21 @@
       <!-- 第二層 -->
       <div class="level-2">
           <div v-if="response.value">
-                <div class="node" v-if="response.value.l && response.value.l[0]">
-                  {{response.value.l[0].code}} <br/>{{response.value.l[0].name}}
+                 <div class="node" v-if="response.value.l && response.value.l[0]">/</div>
+                <div class="node" v-if="response.value.l && response.value.l[0]" :style="{ 'background-color': response.value.l[0].is_direct ? '#006400' : '#808080' }">
+                 
+                  <a class="custom-link" @click="query3(response.value.l[0].code)">{{response.value.l[0].code}}</a>  
+                  <span >{{response.value.l[0].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
+                
           </div>
           <div v-else><div class="node"></div></div>
           <div v-if="response.value">
-                <div class="node" v-if="response.value.r && response.value.r[0]">
-                  {{response.value.r[0].code}} <br/>{{response.value.r[0].name}}
+           <div class="node" v-if="response.value.r && response.value.r[0]">\</div>
+                <div class="node" v-if="response.value.r && response.value.r[0]" :style="{ 'background-color': response.value.r[0].is_direct ? '#006400' : '#808080' }">
+                   <a class="custom-link" @click="query3(response.value.r[0].code)">{{response.value.r[0].code}}</a> 
+                    <span >{{response.value.r[0].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
@@ -50,29 +56,37 @@
       <!-- 第三層  -->
       <div class="level-3">
           <div v-if="response.value">
-                <div class="node" v-if="response.value.l && response.value.l[1]">
-                  {{response.value.l[1].code}} <br/>{{response.value.l[1].name}}
+                 <div class="node" v-if="response.value.l && response.value.l[1]">/</div>
+                <div class="node" v-if="response.value.l && response.value.l[1]" :style="{ 'background-color': response.value.l[1].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.l[1].code)">{{response.value.l[1].code}}</a> 
+                   <span >{{response.value.l[1].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else><div class="node"></div></div>
           <div v-if="response.value">
-                <div class="node" v-if="response.value.l && response.value.l[2]">
-                  {{response.value.l[2].code}} <br/>{{response.value.l[2].name}}
+                <div class="node" v-if="response.value.l && response.value.l[2]">\</div>
+                <div class="node" v-if="response.value.l && response.value.l[2]" :style="{ 'background-color': response.value.l[2].is_direct ? '#006400' : '#808080' }">
+                 <a class="custom-link" @click="query3(response.value.l[2].code)"> {{response.value.l[2].code}}</a> 
+                  <span >{{response.value.l[2].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else><div class="node"></div></div>
           <div v-if="response.value">
-                <div class="node" v-if="response.value.r && response.value.r[1]">
-                  {{response.value.r[1].code}} <br/>{{response.value.r[1].name}}
+                <div class="node" v-if="response.value.r && response.value.r[1]">/</div>
+                <div class="node" v-if="response.value.r && response.value.r[1]" :style="{ 'background-color': response.value.r[1].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.r[1].code)">{{response.value.r[1].code}}</a> 
+                  <span >{{response.value.r[1].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
           <div v-if="response.value">
-                <div class="node" v-if="response.value.r && response.value.r[2]">
-                  {{response.value.r[2].code}} <br/>{{response.value.r[2].name}}
+                <div class="node" v-if="response.value.r && response.value.r[2]">/</div>
+                <div class="node" v-if="response.value.r && response.value.r[2]" :style="{ 'background-color': response.value.r[2].is_direct ? '#006400' : '#808080' }">
+                   <a class="custom-link" @click="query3(response.value.r[2].code)">{{response.value.r[2].code}}</a> 
+                    <span>{{response.value.r[2].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
@@ -82,57 +96,73 @@
       <!-- 第四層 -->
       <div class="level-4">
          <div v-if="response.value">
-                <div class="node" v-if="response.value.l  && response.value.l[3]">
-                  {{response.value.l[3].code}} <br/>{{response.value.l[3].name}}
+                <div class="node" v-if="response.value.l && response.value.l[3]">/</div>
+                <div class="node" v-if="response.value.l  && response.value.l[3]" :style="{ 'background-color': response.value.l[3].is_direct ? '#006400' : '#808080' }">
+                   <a class="custom-link" @click="query3(response.value.l[3].code)">{{response.value.l[3].code}}</a> 
+                    <span>{{response.value.l[3].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
         <div v-if="response.value">
-                <div class="node" v-if="response.value.l && response.value.l[4]">
-                  {{response.value.l[4].code}} <br/>{{response.value.l[4].name}}
+                <div class="node" v-if="response.value.l && response.value.l[4]">\</div>
+                <div class="node" v-if="response.value.l && response.value.l[4]" :style="{ 'background-color': response.value.l[4].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.l[4].code)">{{response.value.l[4].code}} </a> 
+                  <span>{{response.value.l[4].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
          <div v-if="response.value">
-                <div class="node" v-if="response.value.l  && response.value.l[5]">
-                  {{response.value.l[5].code}} <br/>{{response.value.l[5].name}}
+                <div class="node" v-if="response.value.l && response.value.l[5]">/</div>
+                <div class="node" v-if="response.value.l  && response.value.l[5]" :style="{ 'background-color': response.value.l[5].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.l[5].code)">{{response.value.l[5].code}}</a> 
+                   <span>{{response.value.l[5].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
          <div v-if="response.value">
-                <div class="node" v-if="response.value.l  && response.value.l[6]">
-                  {{response.value.l[6].code}} <br/>{{response.value.l[6].name}}
+                <div class="node" v-if="response.value.l && response.value.l[6]">\</div>
+                <div class="node" v-if="response.value.l  && response.value.l[6]" :style="{ 'background-color': response.value.l[6].is_direct ? '#006400' : '#808080' }">
+                   <a class="custom-link" @click="query3(response.value.l[6].code)">{{response.value.l[6].code}}</a> 
+                  <span>{{response.value.l[6].name}}</span>
                 </div>
                 <div v-else><div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
         <div v-if="response.value">
-                <div class="node" v-if="response.value.r && response.value.r[3]">
-                  {{response.value.r[3].code}} <br/>{{response.value.r[3].name}}
+                <div class="node" v-if="response.value.r && response.value.r[3]">/</div>
+                <div class="node" v-if="response.value.r && response.value.r[3]" :style="{ 'background-color': response.value.r[3].is_direct ? '#006400' : '#808080' }">
+                   <a class="custom-link" @click="query3(response.value.r[3].code)">{{response.value.r[3].code}} </a> 
+                   <span>{{response.value.r[3].name}}</span>
                 </div>
                 <div v-else> <div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
         <div v-if="response.value">
-                <div class="node" v-if="response.value.r && response.value.r[4]">
-                  {{response.value.r[4].code}} <br/>{{response.value.r[4].name}}
+                <div class="node" v-if="response.value.r && response.value.r[4]">\</div>
+                <div class="node" v-if="response.value.r && response.value.r[4]" :style="{ 'background-color': response.value.r[4].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.r[4].code)">{{response.value.r[4].code}} </a> 
+                  <span>{{response.value.r[4].name}}</span>
                 </div>
                  <div v-else> <div class="node"></div></div>
           </div>
          <div v-else> <div class="node"></div></div>
         <div v-if="response.value">
-                <div class="node" v-if="response.value.r && response.value.r[5]">
-                  {{response.value.r[5].code}} <br/>{{response.value.r[5].name}}
+                <div class="node" v-if="response.value.r && response.value.r[5]">/</div>
+                <div class="node" v-if="response.value.r && response.value.r[5]" :style="{ 'background-color': response.value.r[5].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.r[5].code)">{{response.value.r[5].code}}</a>
+                  <span>{{response.value.r[5].name}}</span>
                 </div>
                 <div v-else> <div class="node"></div></div>
           </div>
           <div v-else> <div class="node"></div></div>
         <div v-if="response.value ">
-                <div class="node" v-if="response.value.r && response.value.r[6]">
-                  {{response.value.r[6].code}} <br/>{{response.value.r[6].name}}
+                <div class="node" v-if="response.value.r && response.value.r[6]">\</div>
+                <div class="node" v-if="response.value.r && response.value.r[6]" :style="{ 'background-color': response.value.r[6].is_direct ? '#006400' : '#808080' }">
+                  <a class="custom-link" @click="query3(response.value.r[6].code)">{{response.value.r[6].code}}</a>
+                  <span>{{response.value.r[6].name}}</span>
                 </div>
                 <div v-else> <div class="node"></div></div>
           </div>
@@ -177,8 +207,20 @@ export default {
           alert(errorMessage);
           console.error('API 請求失敗:', error);
         });
+    },query3(num) {
+      axios.get(`http://127.0.0.1:8000/api/policyholders/${num}/`, { withCredentials: true })
+        .then(res => {
+          this.response.value = res.data;
+          console.log(this.response);
+        })
+        .catch(error => {
+          const errorMessage = 'API 請求失敗: ' + error;
+          alert(errorMessage);
+          console.error('API 請求失敗:', error);
+        });
     },
   },
+  
 };
 </script>
 
@@ -217,8 +259,10 @@ export default {
 }
 
 .node {
-  width: 100px;
-  height: 40px;
+  width: 150px;
+ 
+  height: auto;
+  flex-direction: column;
   border: 1px solid #ccc;
   display: flex;
   align-items: center;
@@ -253,6 +297,19 @@ export default {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
-    display: flex;
+    display: flex 
   }
+
+  .connected-node::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;  /* 調整箭頭的寬度 */
+  border-right: 20px solid transparent; /* 調整箭頭的寬度 */
+  border-bottom: 20px solid #ccc;  /* 調整箭頭的顏色 */
+  top: -20px;  /* 調整箭頭位置 */
+  left: 50%;  /* 將箭頭置於節點的中央 */
+  transform: translateX(-50%);  /* 將箭頭置於節點的中央 */
+}
 </style>
