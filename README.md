@@ -52,7 +52,7 @@ npm run serve
 ```
 
 ## DEMO影片
-https://youtu.be/NGWaakp0FLQ
+[https://youtu.be/NGWaakp0FLQ](https://youtu.be/n5mu0zumN4o)
 
 ## 補充資料結構： 除spec外新增boolean: is_direct 判斷是否為直接保戶
 ```
