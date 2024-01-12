@@ -17,7 +17,16 @@
     <div class="binary-tree">
       <!-- 第一層 -->
       <div class="level-1">
-        <div class="node">A</div>
+        <div v-if="response.value">
+              <div class="node" >
+                {{response.value.code}} <br/>{{response.value.name}}
+              </div>
+        </div>
+        <div v-else>
+            請搜尋。
+        </div>
+      
+       
       </div>
 
       <!-- 第二層 -->
@@ -55,19 +64,20 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      policyNumber: '',
+      policyNumber: '0000000001',
+      response: {} // 初始化為空的響應對象
     };
   },
   methods: {
     query() {
       // 在這裡發送 API 請求
       axios.get(`http://127.0.0.1:8000/api/policyholders/${this.policyNumber}/`, { withCredentials: true })
-        .then(response => {
-          // 處理 API 回傳的數據
-          console.log(response.data);
+        .then(res => {
+          this.response.value = res.data;
+          console.log(this.response);
         })
         .catch(error => {
-          // 處理錯誤
+          
           console.error('API 請求失敗:', error);
         });
     },
